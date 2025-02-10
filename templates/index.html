@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #00a65a;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .card p, .card h4 {
+            color: white;
+            margin: 5px 0;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-md-3 {
+            flex: 1 1 calc(25% - 20px);
+            max-width: calc(25% - 20px);
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .col-md-3 {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .col-md-3 {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a class="navbar-brand">My Book Recommender</a>
+        <div>
+            <a href="/">Home</a>
+            <a href="/recommend">Recommend</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Top 50 Books</h1>
+        <div class="row">
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ image[i] }}" alt="Book Image">
+                        <p>{{ book_name[i] }}</p>
+                        <h4>Author: {{ author[i] }}</h4>
+                        <h4>Votes: {{ votes[i] }}</h4>
+                        <h4>Rating: {{ rating[i] }}</h4>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
